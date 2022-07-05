@@ -2,6 +2,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
+import 'package:vail_wallet/screen/auth/signup/verify_otp.dart';
 
 import '../../widgets/button.dart';
 
@@ -13,7 +14,6 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-  String? text;
   TextEditingController phone = TextEditingController();
 
   @override
@@ -28,7 +28,8 @@ class _SignupState extends State<Signup> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.only(right: 10.0, top: 20, left: 10.0, bottom: 30.0),
+        padding: const EdgeInsets.only(
+            right: 10.0, top: 20, left: 10.0, bottom: 30.0),
         child: Column(
           children: [
             Expanded(
@@ -49,8 +50,8 @@ class _SignupState extends State<Signup> {
                       Container(
                         height: 60,
                         width: 60,
-                        decoration:
-                            BoxDecoration(borderRadius: BorderRadius.circular(15)),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15)),
                         child: Card(
                           child: Image.asset(
                             'assets/vail_logo.png',
@@ -101,8 +102,12 @@ class _SignupState extends State<Signup> {
               height: 30,
             ),
             Button(
-              text: 'Continue',
-              action: () {},
+              text: 'Send OTP',
+              action: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const OtpScreen();
+                }));
+              },
             )
           ],
         ),
@@ -126,9 +131,7 @@ class PhoneInput extends StatelessWidget {
       child: Row(
         children: [
           CountryCodePicker(
-            onChanged: (value) {
-              print(value.toString());
-            },
+            onChanged: (value) {},
             initialSelection: 'NG',
             showCountryOnly: false,
             showOnlyCountryWhenClosed: false,

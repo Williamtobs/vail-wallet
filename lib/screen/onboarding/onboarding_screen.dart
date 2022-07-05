@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:vail_wallet/screen/onboarding/pages.dart';
 
-import '../auth/signup/signup_screen.dart';
+import '../auth/login/login.dart';
+import '../auth/signup/enter_phone.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -180,7 +181,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         borderRadius: BorderRadius.circular(15)),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        //Login
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                              return const Login();
+                            }));
+                      },
                       child: Text(
                         'Sign In',
                         style: GoogleFonts.inter(
