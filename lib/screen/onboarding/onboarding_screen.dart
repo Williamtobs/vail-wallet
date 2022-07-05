@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:vail_wallet/screen/onboarding/pages.dart';
 
+import '../auth/signup/signup_screen.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
 
@@ -39,24 +41,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            const SizedBox(height: 20,),
-                 Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          prevSlide();
-                        },
-                        child:  Padding(
-                          padding: const  EdgeInsets.only(right: 10.0, top: 20),
-                          child:  pageNo != 0 ? const Icon(
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                InkWell(
+                  onTap: () {
+                    prevSlide();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 10.0, top: 20),
+                    child: pageNo != 0
+                        ? const Icon(
                             Icons.arrow_back_ios_new,
                             color: Colors.black,
-                          ) : Container(),
-                        ),
-                      )
-                    ],
+                          )
+                        : Container(),
                   ),
+                )
+              ],
+            ),
             Expanded(
               child: Padding(
                 padding:
@@ -139,11 +145,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   color: const Color.fromRGBO(234, 86, 12, 1),
-                  borderRadius: BorderRadius.circular(25)),
+                  borderRadius: BorderRadius.circular(15)),
               child: TextButton(
                 onPressed: () {
-                  if(pageNo != 2){
+                  if (pageNo != 2) {
                     nextSlide();
+                  } else {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const Signup();
+                    }));
                   }
                 },
                 child: Text(
@@ -167,10 +178,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         border: Border.all(
                           color: const Color.fromRGBO(234, 86, 12, 1),
                         ),
-                        borderRadius: BorderRadius.circular(25)),
+                        borderRadius: BorderRadius.circular(15)),
                     child: TextButton(
-                      onPressed: () {
-                      },
+                      onPressed: () {},
                       child: Text(
                         'Sign In',
                         style: GoogleFonts.inter(
