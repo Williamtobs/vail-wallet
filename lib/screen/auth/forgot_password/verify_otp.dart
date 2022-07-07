@@ -6,15 +6,16 @@ import 'package:otp_text_field/style.dart';
 import 'package:vail_wallet/screen/auth/signup/user_form.dart';
 
 import '../../widgets/button.dart';
+import 'new_password.dart';
 
-class OtpScreen extends StatefulWidget {
-  const OtpScreen({Key? key}) : super(key: key);
+class ForgotPassOtp extends StatefulWidget {
+  const ForgotPassOtp({Key? key}) : super(key: key);
 
   @override
-  State<OtpScreen> createState() => _OtpScreenState();
+  State<ForgotPassOtp> createState() => _ForgotPassOtpState();
 }
 
-class _OtpScreenState extends State<OtpScreen> {
+class _ForgotPassOtpState extends State<ForgotPassOtp> {
   OtpFieldController pin = OtpFieldController();
   int position = 0;
 
@@ -45,7 +46,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   ),
                   Row(
                     children: [
-                      Text('Sign Up',
+                      Text('Enter Code',
                           style: GoogleFonts.inter(
                               fontSize: 24,
                               fontWeight: FontWeight.w700,
@@ -67,7 +68,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   ),
                   Text(
                       'Enter the 4 digit verification code sent '
-                      '\nto your phone.',
+                      'to your email.',
                       style: GoogleFonts.mulish(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
@@ -104,7 +105,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       const Icon(Icons.edit),
                       const SizedBox(width: 5),
                       Text(
-                        'Change Phone Number',
+                        'Change Email Address',
                         style: GoogleFonts.ibmPlexSans(
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
@@ -144,7 +145,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 action: () {
                   //UserForm
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const UserForm();
+                    return NewPassword();
                   }));
                 })
           ],

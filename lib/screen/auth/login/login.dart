@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/button.dart';
 import '../../widgets/input_field.dart';
 import '../../widgets/success.dart';
+import '../forgot_password/forgot_password.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -102,11 +103,19 @@ class _LoginState extends State<Login> {
                   ),
                   const SizedBox(height: 20),
                   Center(
-                    child: Text('Forgot Password?',
-                        style: GoogleFonts.ibmPlexSans(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black)),
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ForgotPassword();
+                        }));
+                        // ForgotPassword
+                      },
+                      child: Text('Forgot Password?',
+                          style: GoogleFonts.ibmPlexSans(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black)),
+                    ),
                   ),
                   const SizedBox(
                     height: 20,
