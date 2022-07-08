@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'auth/login/login_pin.dart';
 import 'onboarding/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
         const Duration(seconds: 8),
             () => Navigator.pushReplacement(context, MaterialPageRoute(
           builder: (context) {
-            return const OnboardingScreen();
+            return const LoginWithPin();
           },
         )));
   }
