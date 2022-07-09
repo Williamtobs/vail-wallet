@@ -6,6 +6,7 @@ import 'package:otp_text_field/style.dart';
 import 'package:vail_wallet/screen/home/dashboard.dart';
 import 'package:vail_wallet/screen/onboarding/onboarding_screen.dart';
 
+import '../../partials/bottom_navigation.dart';
 import '../../widgets/button.dart';
 
 class LoginWithPin extends StatefulWidget {
@@ -106,7 +107,8 @@ class _LoginWithPinState extends State<LoginWithPin> {
                 action: () {
                   //UserForm
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const DashBoard();
+                    return const BottomCustomNavigation();
+                    //return const DashBoard();
                   }));
                 })
           ],

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../add_money/add_money_screen.dart';
+
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
 
@@ -95,14 +97,14 @@ class _DashBoardState extends State<DashBoard> {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.75,
+            height: MediaQuery.of(context).size.height * 0.65,
             width: MediaQuery.of(context).size.width,
             child: Stack(
               children: [
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.70,
+                    height: MediaQuery.of(context).size.height * 0.60,
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     decoration: const BoxDecoration(
@@ -170,18 +172,25 @@ class ChooseOption extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          children: [
-            const Icon(
-              Icons.account_balance_wallet,
-              color: Color.fromRGBO(234, 86, 12, 1),
-            ),
-            Text('Deposit',
-                style: GoogleFonts.nunito(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black)),
-          ],
+        InkWell(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const AddMoney();
+            }));
+          },
+          child: Column(
+            children: [
+              const Icon(
+                Icons.account_balance_wallet,
+                color: Color.fromRGBO(234, 86, 12, 1),
+              ),
+              Text('Add Money',
+                  style: GoogleFonts.nunito(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black)),
+            ],
+          ),
         ),
         Column(
           children: [
