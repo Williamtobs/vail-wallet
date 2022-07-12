@@ -14,17 +14,17 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(234, 86, 12, 1),
+      backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(234, 86, 12, 1),
+        backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
         automaticallyImplyLeading: false,
         title: Row(
           children: [
             const CircleAvatar(
-              backgroundColor: Colors.white,
-              child: Icon(Icons.person, color: Color.fromRGBO(234, 86, 12, 1)),
+              backgroundImage: AssetImage('assets/profile.png'),
+              radius: 22,
             ),
-            const SizedBox(width: 5),
+            const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -32,13 +32,13 @@ class _DashBoardState extends State<DashBoard> {
                     style: GoogleFonts.nunito(
                         fontSize: 10,
                         fontWeight: FontWeight.w700,
-                        color: Colors.white)),
+                        color: Colors.black)),
                 const SizedBox(height: 3),
                 Text('Welcome to Vail Wallet',
                     style: GoogleFonts.nunito(
                         fontSize: 12,
                         fontWeight: FontWeight.w700,
-                        color: Colors.white)),
+                        color: Colors.black)),
               ],
             )
           ],
@@ -49,27 +49,17 @@ class _DashBoardState extends State<DashBoard> {
             padding: const EdgeInsets.only(right: 10.0),
             child: Row(
               children: [
-                Container(
+                Image.asset(
+                  'assets/messages.png',
                   height: 35,
                   width: 35,
-                  decoration: BoxDecoration(
-                      color: const Color.fromRGBO(250, 250, 250, 1),
-                      borderRadius: BorderRadius.circular(15),
-                      image: const DecorationImage(
-                        image: AssetImage('assets/messages.png'),
-                      )),
                 ),
                 const SizedBox(width: 4),
-                Container(
+                Image.asset(
+                  'assets/notification.png',
                   height: 35,
                   width: 35,
-                  decoration: BoxDecoration(
-                      color: const Color.fromRGBO(250, 250, 250, 1),
-                      borderRadius: BorderRadius.circular(15),
-                      image: const DecorationImage(
-                        image: AssetImage('assets/notification.png'),
-                      )),
-                )
+                ),
               ],
             ),
           )
@@ -77,87 +67,66 @@ class _DashBoardState extends State<DashBoard> {
       ),
       body: Column(
         children: [
-          Expanded(
+          const SizedBox(height: 30),
+          Text('\$ 1.70',
+              style: GoogleFonts.nunito(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black)),
+          const SizedBox(height: 10),
+          Text('Wallet Balance',
+              style: GoogleFonts.nunito(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black)),
+          const SizedBox(height: 40),
+          const Padding(
+            padding: EdgeInsets.only(left: 10.0, right: 10),
+            child: ChooseOption(),
+          ),
+          const SizedBox(height: 10),
+          const Divider(
+            color: Color.fromRGBO(218, 218, 218, 1),
+          ),
+          const SizedBox(height: 10),
+          SingleChildScrollView(
             child: Column(
-              children: [
-                const SizedBox(height: 10),
-                Text('Available Balance',
-                    style: GoogleFonts.nunito(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white)),
-                const SizedBox(height: 20),
-                Text('\$ 100,000.00',
-                    style: GoogleFonts.nunito(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white)),
-                const SizedBox(height: 30),
+              children: const [
+                CardTiles(
+                  title: 'You Sent Bitcoin',
+                  amount: '\$500',
+                  image: 'assets/bitcoin_img.png',
+                  desc: 'Sent \$ 500 worth of bitcoin to a btc address ',
+                  incoming: false,
+                ),
+                SizedBox(height: 5),
+                CardTiles(
+                  title: 'Incoming Payment',
+                  amount: 'N500',
+                  image: 'assets/vail_logo.png',
+                  desc: 'Incoming payment to your Wallet Address : vw-@-232-xxx from Nkwuda Victor  ',
+                  incoming: true,
+                ),
+                SizedBox(height: 5),
+                CardTiles(
+                  title: 'You Sent Bitcoin',
+                  amount: '\$500',
+                  image: 'assets/bitcoin_img.png',
+                  desc: 'Sent \$ 500 worth of bitcoin to a btc address ',
+                  incoming: false,
+                ),
+                SizedBox(height: 5),
+                CardTiles(
+                  title: 'Incoming Payment',
+                  amount: 'N500',
+                  image: 'assets/vail_logo.png',
+                  desc: 'Incoming payment to your Wallet Address : vw-@-232-xxx from Nkwuda Victor  ',
+                  incoming: true,
+                ),
               ],
             ),
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.65,
-            width: MediaQuery.of(context).size.width,
-            child: Stack(
-              children: [
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.60,
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(25),
-                          topRight: Radius.circular(25)),
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 7.0, right: 7.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(
-                            height: 50,
-                          ),
-                          Text('Payment History',
-                              style: GoogleFonts.inter(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black)),
-                          const SizedBox(height: 20),
-                          const CardTiles(),
-                          const SizedBox(height: 10),
-                          const CardTiles()
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                    top: 8,
-                    left: 0,
-                    right: 0,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 74,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white),
-                        child: const Card(
-                            elevation: 1,
-                            child: Padding(
-                              padding: EdgeInsets.all(10),
-                              child: ChooseOption(),
-                            )),
-                      ),
-                    ))
-              ],
-            ),
-          )
+          //const CardTiles(),
         ],
       ),
     );
@@ -180,10 +149,7 @@ class ChooseOption extends StatelessWidget {
           },
           child: Column(
             children: [
-              const Icon(
-                Icons.account_balance_wallet,
-                color: Color.fromRGBO(234, 86, 12, 1),
-              ),
+              Image.asset('assets/home/wallet.png'),
               Text('Add Money',
                   style: GoogleFonts.nunito(
                       fontSize: 13,
@@ -194,11 +160,8 @@ class ChooseOption extends StatelessWidget {
         ),
         Column(
           children: [
-            const Icon(
-              Icons.sync_alt,
-              color: Color.fromRGBO(234, 86, 12, 1),
-            ),
-            Text('Exchange',
+            Image.asset('assets/home/scan.png'),
+            Text('Scan to pay',
                 style: GoogleFonts.nunito(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
@@ -207,10 +170,7 @@ class ChooseOption extends StatelessWidget {
         ),
         Column(
           children: [
-            const Icon(
-              Icons.currency_exchange,
-              color: Color.fromRGBO(234, 86, 12, 1),
-            ),
+            Image.asset('assets/home/save.png'),
             Text('Save 4 me',
                 style: GoogleFonts.nunito(
                     fontSize: 13,
@@ -220,10 +180,7 @@ class ChooseOption extends StatelessWidget {
         ),
         Column(
           children: [
-            const Icon(
-              Icons.arrow_upward,
-              color: Color.fromRGBO(234, 86, 12, 1),
-            ),
+            Image.asset('assets/home/payment.png'),
             Text('Payment',
                 style: GoogleFonts.nunito(
                     fontSize: 13,
@@ -237,13 +194,25 @@ class ChooseOption extends StatelessWidget {
 }
 
 class CardTiles extends StatelessWidget {
-  const CardTiles({Key? key}) : super(key: key);
+  final String title, amount, desc, image;
+  final bool incoming;
+
+  const CardTiles(
+      {Key? key,
+      required this.title,
+      required this.amount,
+      required this.image,
+      required this.desc,
+      required this.incoming})
+      : super(key: key);
+
+  //'assets/bitcoin_img.png'
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 100,
+
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
       child: Card(
         elevation: 1,
@@ -254,8 +223,8 @@ class CardTiles extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const CircleAvatar(
-                    backgroundImage: AssetImage('assets/bitcoin_img.png'),
+                  CircleAvatar(
+                    backgroundImage: AssetImage(image),
                   ),
                   const SizedBox(width: 5),
                   Column(
@@ -274,15 +243,17 @@ class CardTiles extends StatelessWidget {
                     ],
                   ),
                   const Spacer(),
-                  Text('+ USD 500',
+                  Text(incoming ? '+ $amount' : '- $amount',
                       style: GoogleFonts.nunito(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
-                          color: const Color.fromRGBO(0, 154, 70, 1)))
+                          color: incoming
+                              ? const Color.fromRGBO(0, 154, 70, 1)
+                              : Colors.red))
                 ],
               ),
               const SizedBox(height: 5),
-              Text('Sent \$ 500 worth of bitcoin to a btc address ',
+              Text(desc,
                   style: GoogleFonts.mulish(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,

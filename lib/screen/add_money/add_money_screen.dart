@@ -2,6 +2,8 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'credit_card/card_payment.dart';
+
 class AddMoney extends StatefulWidget {
   const AddMoney({Key? key}) : super(key: key);
 
@@ -16,9 +18,9 @@ class _AddMoneyState extends State<AddMoney> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(229, 229, 229, 1),
+      backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
         elevation: 0,
         leading: const Icon(
           Icons.arrow_back_ios,
@@ -187,10 +189,17 @@ class _AddMoneyState extends State<AddMoney> {
           const Divider(
             color: Color.fromRGBO(240, 237, 237, 1),
           ),
-          const Tiles(
-              leading: 'assets/cards.png',
-              title: 'Credit Card',
-              trailing: Icons.arrow_forward_ios),
+          InkWell(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return const CardPaymentScreen();
+              }));
+            },
+            child: const Tiles(
+                leading: 'assets/cards.png',
+                title: 'Credit Card',
+                trailing: Icons.arrow_forward_ios),
+          ),
           const Divider(
             color: Color.fromRGBO(240, 237, 237, 1),
           ),

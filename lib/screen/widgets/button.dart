@@ -3,8 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Button extends StatelessWidget {
   final String text;
+  final Color? color;
   final void Function()? action;
-  const Button({Key? key, required this.text, required this.action}) : super(key: key);
+  const Button({Key? key, required this.text, required this.action, this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class Button extends StatelessWidget {
       height: 46,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(234, 86, 12, 1),
+          color: color ?? const Color.fromRGBO(234, 86, 12, 1),
           borderRadius: BorderRadius.circular(15)),
       child: TextButton(
         onPressed: action,

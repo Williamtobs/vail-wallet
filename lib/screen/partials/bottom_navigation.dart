@@ -32,22 +32,26 @@ class _BottomCustomNavigationState extends State<BottomCustomNavigation> {
       Icons.chat,
       size: 150,
     ),
+    const Icon(
+      Icons.camera,
+      size: 150,
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        elevation: 2,
-        onPressed: () {},
-        backgroundColor: Colors.white,
-        child: Image.asset('assets/dashboard_send.png'),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
       body: pages.elementAt(selectedIndex),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        child: SizedBox(
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black,
+              width: 0.5
+            )
+          ),
           child: BottomNavigationBar(
             backgroundColor: Colors.white,
             currentIndex: selectedIndex,
@@ -68,8 +72,8 @@ class _BottomCustomNavigationState extends State<BottomCustomNavigation> {
             items: [
               BottomNavigationBarItem(
                 icon: selectedIndex != 0
-                    ? Image.asset('assets/home.png')
-                    : Image.asset('assets/home_color.png'),
+                    ? Image.asset('assets/vail_icon_black.png')
+                    : Image.asset('assets/vail_icon.png'),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
@@ -79,13 +83,17 @@ class _BottomCustomNavigationState extends State<BottomCustomNavigation> {
                 label: 'Send',
               ),
               BottomNavigationBarItem(
-                icon: selectedIndex != 2
+                icon: Image.asset('assets/exchange.png'),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: selectedIndex != 3
                     ? Image.asset('assets/money-receive.png')
                     : Image.asset('assets/money-receive-color.png'),
                 label: 'Receive',
               ),
               BottomNavigationBarItem(
-                icon: selectedIndex != 3
+                icon: selectedIndex != 4
                     ? Image.asset('assets/login.png')
                     : Image.asset('assets/login-color.png'),
                 label: 'Request',

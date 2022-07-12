@@ -4,7 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'button.dart';
 
 class Success extends StatelessWidget {
-  const Success({Key? key}) : super(key: key);
+  final String? title, desc;
+
+  const Success({Key? key, this.title, this.desc}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,23 +28,24 @@ class Success extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Text('Congratulation',
+                  Text(title ?? 'Congratulation',
                       style: GoogleFonts.inter(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          color: const Color.fromRGBO(246, 111, 71, 1))),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                        color: const Color.fromRGBO(0, 154, 70, 1),
+                      )),
                   const SizedBox(
                     height: 30,
                   ),
                   Text(
-                      'You have successfully created your account '
-                      'click on the button below to login',
+                      desc ??
+                          'You have successfully created your account '
+                              'click on the button below to login',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.inter(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: Colors.black)),
-
                 ],
               ),
             ),
@@ -52,6 +55,7 @@ class Success extends StatelessWidget {
             Button(
               text: 'Done',
               action: () {},
+              color: const Color.fromRGBO(0, 154, 70, 1),
             ),
           ],
         ),
