@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vail_wallet/screen/home/dashboard.dart';
 
+import '../nav/send_money.dart';
+
 class BottomCustomNavigation extends StatefulWidget {
   const BottomCustomNavigation({Key? key}) : super(key: key);
 
@@ -20,10 +22,7 @@ class _BottomCustomNavigationState extends State<BottomCustomNavigation> {
 
   List<Widget> pages = [
     const DashBoard(),
-    const Icon(
-      Icons.call,
-      size: 150,
-    ),
+    SendMoneyScreen(),
     const Icon(
       Icons.camera,
       size: 150,
@@ -84,7 +83,7 @@ class _BottomCustomNavigationState extends State<BottomCustomNavigation> {
               ),
               BottomNavigationBarItem(
                 icon: Image.asset('assets/exchange.png'),
-                label: 'Home',
+                label: 'Exchange',
               ),
               BottomNavigationBarItem(
                 icon: selectedIndex != 3

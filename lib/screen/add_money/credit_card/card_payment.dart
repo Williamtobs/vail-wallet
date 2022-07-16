@@ -35,7 +35,7 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
             children: [
               const Icon(
                 Icons.arrow_back_ios,
-                color: Colors.black,
+                  color: Color.fromRGBO(234, 86, 12, 1)
               ),
               Text(
                 'Back',

@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../widgets/button.dart';
 import '../../widgets/input_field.dart';
-import '../../widgets/success.dart';
 import '../forgot_password/forgot_password.dart';
 
 class Login extends StatefulWidget {

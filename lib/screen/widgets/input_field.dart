@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class InputField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType? keyboardType;
+  final bool? otherScreen;
   final bool? obscureText;
   final String text;
 
@@ -12,7 +13,8 @@ class InputField extends StatelessWidget {
       required this.controller,
       this.keyboardType,
       required this.text,
-      this.obscureText})
+      this.obscureText,
+      this.otherScreen})
       : super(key: key);
 
   @override
@@ -25,18 +27,24 @@ class InputField extends StatelessWidget {
       style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400),
       decoration: InputDecoration(
         filled: false,
-        border: const OutlineInputBorder(
+        border: OutlineInputBorder(
+            borderSide: const BorderSide(
+                color: Color.fromRGBO(189, 189, 189, 1), width: 1),
+            borderRadius: otherScreen == true
+                ? BorderRadius.circular(15)
+                : BorderRadius.zero),
+        focusedBorder: OutlineInputBorder(
             borderSide:
-                BorderSide(color: Color.fromRGBO(189, 189, 189, 1), width: 1),
-            borderRadius: BorderRadius.zero),
-        focusedBorder: const OutlineInputBorder(
+                const BorderSide(color: Color.fromRGBO(189, 189, 189, 1), width: 1),
+            borderRadius: otherScreen == true
+                ? BorderRadius.circular(15)
+                : BorderRadius.zero),
+        enabledBorder:  OutlineInputBorder(
             borderSide:
-                BorderSide(color: Color.fromRGBO(189, 189, 189, 1), width: 1),
-            borderRadius: BorderRadius.zero),
-        enabledBorder: const OutlineInputBorder(
-            borderSide:
-                BorderSide(color: Color.fromRGBO(189, 189, 189, 1), width: 1),
-            borderRadius: BorderRadius.zero),
+                const BorderSide(color: Color.fromRGBO(189, 189, 189, 1), width: 1),
+            borderRadius: otherScreen == true
+                ? BorderRadius.circular(15)
+                : BorderRadius.zero),
         hintText: text,
         hintStyle:
             GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400),

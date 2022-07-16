@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../widgets/button.dart';
+import '../new_card/new_card.dart';
 
 class SelectCard extends StatelessWidget {
   const SelectCard({Key? key}) : super(key: key);
@@ -52,10 +53,10 @@ class SelectCard extends StatelessWidget {
                 text: 'Add Card',
                 action: () {
                   //UserForm
-                  //Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
                   //return const BottomCustomNavigation();
-                  //return const DashBoard();
-                  //}));
+                  return const AddNewCard();
+                  }));
                 })
           ],
         ),
