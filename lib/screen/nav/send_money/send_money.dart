@@ -1,10 +1,9 @@
 import 'package:currency_picker/currency_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../widgets/input_field.dart';
+import '../../widgets/input_field.dart';
 
 class SendMoneyScreen extends StatelessWidget {
   SendMoneyScreen({Key? key}) : super(key: key);

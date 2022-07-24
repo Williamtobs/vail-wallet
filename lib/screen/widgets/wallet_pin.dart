@@ -31,7 +31,7 @@ class _WalletPinState extends State<WalletPin> {
     }
 
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(229, 229, 229, 1),
+      backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
@@ -64,8 +64,8 @@ class _WalletPinState extends State<WalletPin> {
                     obscureText: true,
                     otpFieldStyle: OtpFieldStyle(
                         enabledBorderColor:
-                            const Color.fromRGBO(229, 229, 229, 1),
-                        borderColor: const Color.fromRGBO(229, 229, 229, 1)),
+                       const Color.fromRGBO(255, 255, 255, 1),
+                        borderColor: const Color.fromRGBO(255, 255, 255, 1)),
                     width: MediaQuery.of(context).size.width,
                     fieldWidth: 50,
                     style: GoogleFonts.roboto(

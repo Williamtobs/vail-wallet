@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vail_wallet/screen/home/dashboard.dart';
 
-import '../nav/send_money.dart';
+import '../nav/receive_money/receive_money_option.dart';
+import '../nav/send_money/send_money.dart';
 
 class BottomCustomNavigation extends StatefulWidget {
   const BottomCustomNavigation({Key? key}) : super(key: key);
@@ -27,10 +28,7 @@ class _BottomCustomNavigationState extends State<BottomCustomNavigation> {
       Icons.camera,
       size: 150,
     ),
-    const Icon(
-      Icons.chat,
-      size: 150,
-    ),
+    const MoneyOption(),
     const Icon(
       Icons.camera,
       size: 150,

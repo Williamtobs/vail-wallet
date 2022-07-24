@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vail_wallet/screen/payment/send_crypto/send_crypto.dart';
+import 'package:vail_wallet/screen/payment/transfer_money/transfer_money.dart';
 
 import '../add_money/add_money_screen.dart';
+import '../nav/send_money.dart';
 import 'buy_airtime/buy_airtime.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -109,17 +111,33 @@ class _PaymentScreenState extends State<PaymentScreen> {
           const Divider(
             color: Color.fromRGBO(240, 237, 237, 1),
           ),
-          const Tiles(
-              leading: 'assets/payment/out.png',
-              title: 'Pay Other Vail Users',
-              trailing: Icons.arrow_forward_ios),
+          InkWell(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return SendMoneyScreen();
+              }));
+              //SendMoneyScreen
+            },
+            child: const Tiles(
+                leading: 'assets/payment/out.png',
+                title: 'Pay Other Vail Users',
+                trailing: Icons.arrow_forward_ios),
+          ),
           const Divider(
             color: Color.fromRGBO(240, 237, 237, 1),
           ),
-          const Tiles(
-              leading: 'assets/payment/transfer.png',
-              title: 'Transfer money to Bank',
-              trailing: Icons.arrow_forward_ios),
+          InkWell(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return const TransferToBank();
+              }));
+              //TransferToBank
+            },
+            child: const Tiles(
+                leading: 'assets/payment/transfer.png',
+                title: 'Transfer money to Bank',
+                trailing: Icons.arrow_forward_ios),
+          ),
           const Divider(
             color: Color.fromRGBO(240, 237, 237, 1),
           ),
