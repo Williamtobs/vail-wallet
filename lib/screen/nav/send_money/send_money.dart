@@ -6,7 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/input_field.dart';
 
 class SendMoneyScreen extends StatelessWidget {
-  SendMoneyScreen({Key? key}) : super(key: key);
+  final String? title;
+  SendMoneyScreen({Key? key, this.title}) : super(key: key);
 
   TextEditingController address = TextEditingController();
   TextEditingController note = TextEditingController();
@@ -42,7 +43,7 @@ class SendMoneyScreen extends StatelessWidget {
         ),
         centerTitle: true,
         title: Text(
-          'Send Money',
+          title ?? 'Send Money',
           style: GoogleFonts.inter(
               fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),
         ),

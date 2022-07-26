@@ -29,10 +29,7 @@ class _BottomCustomNavigationState extends State<BottomCustomNavigation> {
       size: 150,
     ),
     const MoneyOption(),
-    const Icon(
-      Icons.camera,
-      size: 150,
-    ),
+    SendMoneyScreen(title: 'Request Money',)
   ];
 
   @override

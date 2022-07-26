@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'bank_deposit/money_deposit.dart';
+import 'crypto/receive_crypto.dart';
+
 class MoneyOption extends StatelessWidget {
   const MoneyOption({Key? key}) : super(key: key);
 
@@ -34,7 +37,7 @@ class MoneyOption extends StatelessWidget {
         ),
         centerTitle: true,
         title: Text(
-          'Recive Money',
+          'Receive Money',
           style: GoogleFonts.inter(
               fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),
         ),
@@ -93,8 +96,24 @@ class MoneyOption extends StatelessWidget {
                 )),
             trailing: Image.asset('assets/copy.png'),
           ),
-          const OptionList(title: 'Crypto Currency', subtitle: 'Receive crypto payment'),
-          const OptionList(title: 'Bank Deposit', subtitle: 'Receive Bank transfers')
+          InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const ReceiveCrypto();
+                }));
+              },
+              child: const OptionList(
+                  title: 'Crypto Currency',
+                  subtitle: 'Receive crypto payment')),
+          //MoneyDeposit
+          InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const MoneyDeposit();
+                }));
+              },
+              child: const OptionList(
+                  title: 'Bank Deposit', subtitle: 'Receive Bank transfers'))
         ],
       ),
     );
@@ -117,14 +136,16 @@ class OptionList extends StatelessWidget {
           border: Border.symmetric(
               horizontal: BorderSide(color: Color.fromRGBO(218, 218, 218, 1)))),
       child: ListTile(
-        title: Text(title, style: GoogleFonts.mulish(
-          fontWeight: FontWeight.w700,
-          fontSize: 10,
-        )),
-        subtitle: Text(subtitle, style: GoogleFonts.nunito(
-          fontWeight: FontWeight.w400,
-          fontSize: 12,
-        )),
+        title: Text(title,
+            style: GoogleFonts.mulish(
+              fontWeight: FontWeight.w700,
+              fontSize: 10,
+            )),
+        subtitle: Text(subtitle,
+            style: GoogleFonts.nunito(
+              fontWeight: FontWeight.w400,
+              fontSize: 12,
+            )),
         trailing: const Icon(Icons.arrow_forward_ios),
       ),
     );

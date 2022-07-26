@@ -4,7 +4,7 @@ import 'package:vail_wallet/screen/payment/send_crypto/send_crypto.dart';
 import 'package:vail_wallet/screen/payment/transfer_money/transfer_money.dart';
 
 import '../add_money/add_money_screen.dart';
-import '../nav/send_money.dart';
+import '../nav/send_money/send_money.dart';
 import 'buy_airtime/buy_airtime.dart';
 
 class PaymentScreen extends StatefulWidget {
