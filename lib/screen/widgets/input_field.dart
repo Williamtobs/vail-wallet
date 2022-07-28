@@ -7,6 +7,8 @@ class InputField extends StatelessWidget {
   final bool? otherScreen;
   final bool? obscureText;
   final String text;
+  final bool trailing;
+  final IconData? icon;
 
   const InputField(
       {Key? key,
@@ -14,7 +16,7 @@ class InputField extends StatelessWidget {
       this.keyboardType,
       required this.text,
       this.obscureText,
-      this.otherScreen})
+      this.otherScreen, this.trailing = false, this.icon})
       : super(key: key);
 
   @override
@@ -26,6 +28,7 @@ class InputField extends StatelessWidget {
       keyboardType: keyboardType ?? TextInputType.text,
       style: GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400),
       decoration: InputDecoration(
+        suffixIcon: trailing? Icon(icon, size: 30,) : null,
         filled: false,
         border: OutlineInputBorder(
             borderSide: const BorderSide(

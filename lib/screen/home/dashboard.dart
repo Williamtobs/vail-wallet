@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../add_money/add_money_screen.dart';
 import '../payment/payment_screen.dart';
+import '../profile/profile_screen.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -21,9 +22,16 @@ class _DashBoardState extends State<DashBoard> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            const CircleAvatar(
-              backgroundImage: AssetImage('assets/profile.png'),
-              radius: 22,
+            InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return const Profile();
+                }));
+              },
+              child: const CircleAvatar(
+                backgroundImage: AssetImage('assets/profile.png'),
+                radius: 22,
+              ),
             ),
             const SizedBox(width: 10),
             Column(
