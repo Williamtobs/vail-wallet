@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../add_money/add_money_screen.dart';
 import '../payment/payment_screen.dart';
 import '../profile/profile_screen.dart';
+import '../save/save.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -177,15 +178,22 @@ class ChooseOption extends StatelessWidget {
                     color: Colors.black)),
           ],
         ),
-        Column(
-          children: [
-            Image.asset('assets/home/save.png'),
-            Text('Save 4 me',
-                style: GoogleFonts.nunito(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black)),
-          ],
+        InkWell(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const Save();
+            }));
+          },
+          child: Column(
+            children: [
+              Image.asset('assets/home/save.png'),
+              Text('Save 4 me',
+                  style: GoogleFonts.nunito(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black)),
+            ],
+          ),
         ),
         InkWell(
           onTap: (){
