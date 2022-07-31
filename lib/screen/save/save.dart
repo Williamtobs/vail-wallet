@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../home/dashboard.dart';
 import 'add_saving/add_saving.dart';
+import 'my_saving/my_savings.dart';
 
 class Save extends StatelessWidget {
   const Save({Key? key}) : super(key: key);
@@ -150,7 +151,12 @@ class Save extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //MySavings
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return const MySavings();
+                      }));
+                    },
                     child: Row(
                       children: [
                         ColorFiltered(
@@ -191,7 +197,7 @@ class Save extends StatelessWidget {
                           'Withdraw',
                           style: GoogleFonts.inter(
                               fontWeight: FontWeight.w700,
-                              color: Color.fromRGBO(234, 86, 12, 1),
+                              color: const Color.fromRGBO(234, 86, 12, 1),
                               fontSize: 13),
                         )
                       ],
