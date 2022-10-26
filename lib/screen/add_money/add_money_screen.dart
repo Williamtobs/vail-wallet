@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'credit_card/card_payment.dart';
+import 'mobile_deposit/enter_deposit_amount.dart';
 
 class AddMoney extends StatefulWidget {
   const AddMoney({Key? key}) : super(key: key);
@@ -21,10 +22,28 @@ class _AddMoneyState extends State<AddMoney> {
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+        leadingWidth: 100,
         elevation: 0,
-        leading: const Icon(
-          Icons.arrow_back_ios,
-          color: Colors.black,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10, right: 4.0),
+            child: Row(
+              children: [
+                const Icon(Icons.arrow_back_ios,
+                    color: Color.fromRGBO(234, 86, 12, 1)),
+                Text(
+                  'Back',
+                  style: GoogleFonts.mulish(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      color: const Color.fromRGBO(234, 86, 12, 1)),
+                )
+              ],
+            ),
+          ),
         ),
         centerTitle: true,
         title: Text(
@@ -36,7 +55,7 @@ class _AddMoneyState extends State<AddMoney> {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10.0),
             child: Row(
@@ -150,13 +169,13 @@ class _AddMoneyState extends State<AddMoney> {
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-            child: Image.asset('assets/add_money.png'),
+            child: Image.asset('assets/bar_code.png'),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+            padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 20),
             child: Text(
-                'Choose your preferred deposit option '
-                'to your selected currency for quick deposit',
+                'Chose your preferd deposit option and use the vail '
+                'wallet address to recieve top up from other vail users ',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.nunito(
                     fontSize: 14,
@@ -170,7 +189,7 @@ class _AddMoneyState extends State<AddMoney> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Deposit Option',
+                  'Deposit Options',
                   style: GoogleFonts.nunito(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
@@ -189,38 +208,63 @@ class _AddMoneyState extends State<AddMoney> {
           const Divider(
             color: Color.fromRGBO(240, 237, 237, 1),
           ),
-          InkWell(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context){
-                return const CardPaymentScreen();
-              }));
-            },
-            child: const Tiles(
-                leading: 'assets/cards.png',
-                title: 'Credit Card',
-                trailing: Icons.arrow_forward_ios),
-          ),
-          const Divider(
-            color: Color.fromRGBO(240, 237, 237, 1),
-          ),
-          const Tiles(
-              leading: 'assets/bitcoin-refresh.png',
-              title: 'Crypto Currency',
-              trailing: Icons.arrow_forward_ios),
-          const Divider(
-            color: Color.fromRGBO(240, 237, 237, 1),
-          ),
-          const Tiles(
-              leading: 'assets/strongbox.png',
-              title: 'Bank Transfer',
-              trailing: Icons.arrow_forward_ios),
-          const Divider(
-            color: Color.fromRGBO(240, 237, 237, 1),
-          ),
-          const Tiles(
-              leading: 'assets/paypal.png',
-              title: 'Credit Card',
-              trailing: Icons.arrow_forward_ios)
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const InkWell(
+                    // onTap: (){
+                    //   Navigator.push(context, MaterialPageRoute(builder: (context){
+                    //     return const CardPaymentScreen();
+                    //   }));
+                    // },
+                    child: const Tiles(
+                        leading: 'assets/link.png',
+                        title: 'Payment Link',
+                        trailing: Icons.arrow_forward_ios),
+                  ),
+                  const Divider(
+                    color: Color.fromRGBO(240, 237, 237, 1),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const CardPaymentScreen();
+                      }));
+                    },
+                    child: const Tiles(
+                        leading: 'assets/bitcoin-refresh.png',
+                        title: 'Crypto Currency',
+                        trailing: Icons.arrow_forward_ios),
+                  ),
+                  const Divider(
+                    color: Color.fromRGBO(240, 237, 237, 1),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const EnterDepositAmountScreen();
+                      }));
+                      //EnterDepositAmountScreen
+                    },
+                    child: const Tiles(
+                        leading: 'assets/deposit.png',
+                        title: 'Mobile Deposit',
+                        trailing: Icons.arrow_forward_ios),
+                  ),
+                  // const Divider(
+                  //   color: Color.fromRGBO(240, 237, 237, 1),
+                  // ),
+                  // const Tiles(
+                  //     leading: 'assets/paypal.png',
+                  //     title: 'Credit Card',
+                  //     trailing: Icons.arrow_forward_ios),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

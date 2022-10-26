@@ -4,6 +4,7 @@ import 'package:numeric_keyboard/numeric_keyboard.dart';
 
 import '../../widgets/button.dart';
 import '../../widgets/wallet_pin.dart';
+import '../receive_coin/crypto_screen.dart';
 import 'cards/select_card.dart';
 
 class CardPaymentScreen extends StatefulWidget {
@@ -33,10 +34,8 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
           padding: const EdgeInsets.only(left: 10, right: 4.0),
           child: Row(
             children: [
-              const Icon(
-                Icons.arrow_back_ios,
-                  color: Color.fromRGBO(234, 86, 12, 1)
-              ),
+              const Icon(Icons.arrow_back_ios,
+                  color: Color.fromRGBO(234, 86, 12, 1)),
               Text(
                 'Back',
                 style: GoogleFonts.mulish(
@@ -49,7 +48,7 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
         ),
         centerTitle: true,
         title: Text(
-          'Credit Card',
+          'Crypto Payment',
           style: GoogleFonts.inter(
               fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),
         ),
@@ -63,7 +62,17 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
             Expanded(
               child: Column(
                 children: [
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 30),
+                  Center(
+                    child: Text(
+                      '\$ $text',
+                      style: GoogleFonts.mulish(
+                        fontSize: 48,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 40),
                   InkWell(
                       onTap: () {
                         Navigator.push(context,
@@ -72,16 +81,6 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                         }));
                       },
                       child: const SelectedCard()),
-                  const SizedBox(height: 50),
-                  Center(
-                    child: Text(
-                      '\$ $text',
-                      style: GoogleFonts.nunito(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -110,7 +109,7 @@ class _CardPaymentScreenState extends State<CardPaymentScreen> {
                 action: () {
                   //UserForm
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const WalletPin();
+                    return const CryptoScreen();
                     //return const DashBoard();
                   }));
                 })
@@ -144,7 +143,7 @@ class SelectedCard extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(35),
                   image: const DecorationImage(
-                      image: AssetImage('assets/gt_bank.png'),
+                      image: AssetImage('assets/bitcoin_img.png'),
                       fit: BoxFit.fill)),
             ),
             const SizedBox(width: 10),
@@ -154,14 +153,14 @@ class SelectedCard extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Text('Select added credit card',
+                Text('Select Crypto to make deposit',
                     style: GoogleFonts.nunito(
                         fontSize: 10,
                         fontWeight: FontWeight.w700,
                         color: const Color.fromRGBO(47, 57, 78, 1))),
                 const SizedBox(height: 5),
                 Text(
-                  'GTB visa card',
+                  'Bitcoin',
                   style: GoogleFonts.nunito(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
@@ -170,7 +169,8 @@ class SelectedCard extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            const Icon(Icons.expand_circle_down_outlined)
+            const RotatedBox(
+                quarterTurns: 3, child: Icon(Icons.expand_circle_down_outlined, size: 30,))
           ],
         ),
       ),
