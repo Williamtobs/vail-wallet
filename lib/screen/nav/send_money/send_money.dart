@@ -2,6 +2,8 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
+import 'package:vail_wallet/screen/nav/send_money/select_recipient.dart';
+import 'package:vail_wallet/screen/nav/send_money/transaction_details.dart';
 
 import '../../widgets/button.dart';
 
@@ -98,10 +100,10 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                   const SizedBox(height: 40),
                   InkWell(
                       onTap: () {
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(builder: (context) {
-                        //       return const SelectCard();
-                        //     }));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                              return const SelectReceiver();
+                            }));
                       },
                       child: const SelectedCard()),
                   // Text('Wallet Balance',
@@ -252,13 +254,14 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
             ),
             const SizedBox(height: 30),
             Button(
-                text: 'Next',
+                text: 'Continue',
                 action: () {
-                  //UserForm
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  //   return const CryptoScreen();
-                  //   //return const DashBoard();
-                  // }));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return SendMoneyDetails(
+                      amount: text,
+                      name: 'Ebere Ikenna m', address: ' VW@-XXX-XXX',
+                    );
+                  }));
                 })
           ],
         ),
