@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vail_wallet/screen/widgets/bottom_modal.dart';
+import 'package:vail_wallet/screen/widgets/button.dart';
 
 import '../add_money/add_money_screen.dart';
 import '../payment/payment_screen.dart';
@@ -17,6 +19,7 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
@@ -24,8 +27,8 @@ class _DashBoardState extends State<DashBoard> {
         title: Row(
           children: [
             InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context){
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return const Profile();
                 }));
               },
@@ -38,16 +41,16 @@ class _DashBoardState extends State<DashBoard> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Hello Victor Chike',
-                    style: GoogleFonts.nunito(
+                Text('Good Morning Victor Chike',
+                    style: GoogleFonts.mulish(
                         fontSize: 10,
                         fontWeight: FontWeight.w700,
                         color: Colors.black)),
                 const SizedBox(height: 3),
-                Text('Welcome to Vail Wallet',
-                    style: GoogleFonts.nunito(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
+                Text('Welcome back',
+                    style: GoogleFonts.mulish(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w400,
                         color: Colors.black)),
               ],
             )
@@ -59,10 +62,72 @@ class _DashBoardState extends State<DashBoard> {
             padding: const EdgeInsets.only(right: 10.0),
             child: Row(
               children: [
-                Image.asset(
-                  'assets/messages.png',
-                  height: 35,
-                  width: 35,
+                InkWell(
+                  onTap: () {
+                    BottomSheets.showBottomSheet(
+                        context: context,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10.0, right: 10, top: 10, bottom: 10),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const SizedBox(height: 20,),
+                                Text('Set Vail Wallet Address',
+                                    style: GoogleFonts.inter(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.black)),
+                                const SizedBox(height: 10),
+                                Text(
+                                    'Chose a unique Vail Wallet address for getting paid'
+                                    ' by anyone using vailwallet',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.mulish(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.black)),
+                                const SizedBox(height: 20),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: MediaQuery.of(context).viewInsets.bottom),
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                        hintText: 'Enter your Vail Wallet address',
+                                        border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(5),
+                                            borderSide: const BorderSide(
+                                              width: 1,
+                                                color: Color.fromRGBO(234, 86, 12, 1))),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(5),
+                                            borderSide: const BorderSide(
+                                              width: 1,
+                                                color: Color.fromRGBO(234, 86, 12, 1))),
+                                        hintStyle: GoogleFonts.mulish(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black)),
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                Text('vailwallet.com/vw@vailwallet',
+                                    style: GoogleFonts.mulish(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.black)),
+                                const SizedBox(height: 20),
+                                Button(text: 'Set Access', action: (){})
+                              ],
+                            ),
+                          ),
+                        ));
+                  },
+                  child: Image.asset(
+                    'assets/messages.png',
+                    height: 35,
+                    width: 35,
+                  ),
                 ),
                 const SizedBox(width: 4),
                 Image.asset(
@@ -78,59 +143,62 @@ class _DashBoardState extends State<DashBoard> {
       body: Column(
         children: [
           const SizedBox(height: 30),
-          Text('\$ 1.70',
-              style: GoogleFonts.nunito(
+          Text('\$ 10.00',
+              style: GoogleFonts.mulish(
                   fontSize: 24,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w900,
                   color: Colors.black)),
-          const SizedBox(height: 10),
-          Text('Wallet Balance',
-              style: GoogleFonts.nunito(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black)),
-          const SizedBox(height: 40),
+          // const SizedBox(height: 10),
+          // Text('Wallet Balance',
+          //     style: GoogleFonts.nunito(
+          //         fontSize: 15,
+          //         fontWeight: FontWeight.w700,
+          //         color: Colors.black)),
+          const SizedBox(height: 30),
           const Padding(
             padding: EdgeInsets.only(left: 10.0, right: 10),
             child: ChooseOption(),
           ),
-          const SizedBox(height: 10),
-          const Divider(
-            color: Color.fromRGBO(218, 218, 218, 1),
-          ),
+          const SizedBox(height: 20),
+          Container(color: const Color.fromRGBO(218, 218, 218, 1), height: 10),
           const SizedBox(height: 10),
           SingleChildScrollView(
             child: Column(
-              children: const [
-                CardTiles(
+              children: [
+                const CardTiles(
                   title: 'You Sent Bitcoin',
                   amount: '\$500',
                   image: 'assets/bitcoin_img.png',
                   desc: 'Sent \$ 500 worth of bitcoin to a btc address ',
                   incoming: false,
                 ),
-                SizedBox(height: 5),
-                CardTiles(
+                Container(
+                    color: const Color.fromRGBO(218, 218, 218, 1), height: 10),
+                const CardTiles(
                   title: 'Incoming Payment',
                   amount: 'N500',
                   image: 'assets/vail_logo.png',
-                  desc: 'Incoming payment to your Wallet Address : vw-@-232-xxx from Nkwuda Victor  ',
+                  desc:
+                      'Incoming payment to your Wallet Address : vw-@-232-xxx from Nkwuda Victor  ',
                   incoming: true,
                 ),
-                SizedBox(height: 5),
-                CardTiles(
+                Container(
+                    color: const Color.fromRGBO(218, 218, 218, 1), height: 10),
+                const CardTiles(
                   title: 'You Sent Bitcoin',
                   amount: '\$500',
                   image: 'assets/bitcoin_img.png',
                   desc: 'Sent \$ 500 worth of bitcoin to a btc address ',
                   incoming: false,
                 ),
-                SizedBox(height: 5),
-                CardTiles(
+                Container(
+                    color: const Color.fromRGBO(218, 218, 218, 1), height: 10),
+                const CardTiles(
                   title: 'Incoming Payment',
                   amount: 'N500',
                   image: 'assets/vail_logo.png',
-                  desc: 'Incoming payment to your Wallet Address : vw-@-232-xxx from Nkwuda Victor  ',
+                  desc:
+                      'Incoming payment to your Wallet Address : vw-@-232-xxx from Nkwuda Victor  ',
                   incoming: true,
                 ),
               ],
@@ -149,7 +217,7 @@ class ChooseOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         InkWell(
           onTap: () {
@@ -157,26 +225,34 @@ class ChooseOption extends StatelessWidget {
               return const AddMoney();
             }));
           },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Column(
+              children: [
+                Image.asset('assets/home/add_money.png', height: 40, width: 40),
+                const SizedBox(height: 5),
+                Text('Add Money',
+                    style: GoogleFonts.mulish(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black)),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
             children: [
-              Image.asset('assets/home/wallet.png'),
-              Text('Add Money',
-                  style: GoogleFonts.nunito(
+              Image.asset('assets/home/scan_pay.png'),
+              const SizedBox(height: 5),
+              Text('Scan to pay',
+                  style: GoogleFonts.mulish(
                       fontSize: 13,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w700,
                       color: Colors.black)),
             ],
           ),
-        ),
-        Column(
-          children: [
-            Image.asset('assets/home/scan.png'),
-            Text('Scan to pay',
-                style: GoogleFonts.nunito(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black)),
-          ],
         ),
         InkWell(
           onTap: () {
@@ -184,33 +260,41 @@ class ChooseOption extends StatelessWidget {
               return const Save();
             }));
           },
-          child: Column(
-            children: [
-              Image.asset('assets/home/save.png'),
-              Text('Save 4 me',
-                  style: GoogleFonts.nunito(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black)),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Column(
+              children: [
+                Image.asset('assets/home/save_me.png'),
+                const SizedBox(height: 5),
+                Text('Save 4 me',
+                    style: GoogleFonts.mulish(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black)),
+              ],
+            ),
           ),
         ),
         InkWell(
-          onTap: (){
+          onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return const PaymentScreen();
             }));
             //PaymentScreen
           },
-          child: Column(
-            children: [
-              Image.asset('assets/home/payment.png'),
-              Text('Payment',
-                  style: GoogleFonts.nunito(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black)),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Column(
+              children: [
+                Image.asset('assets/home/payment2.png'),
+                const SizedBox(height: 5),
+                Text('Payment',
+                    style: GoogleFonts.mulish(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black)),
+              ],
+            ),
           ),
         )
       ],
@@ -237,10 +321,9 @@ class CardTiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
       child: Card(
-        elevation: 1,
+        elevation: 0,
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
@@ -255,7 +338,7 @@ class CardTiles extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('You Sent Bitcoin',
+                      Text(title,
                           style: GoogleFonts.nunito(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,

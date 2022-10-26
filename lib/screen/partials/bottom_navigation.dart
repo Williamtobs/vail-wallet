@@ -40,6 +40,7 @@ class _BottomCustomNavigationState extends State<BottomCustomNavigation> {
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         child: Container(
+          height: 70,
           decoration: BoxDecoration(
             border: Border.all(
               color: Colors.black,
@@ -66,8 +67,8 @@ class _BottomCustomNavigationState extends State<BottomCustomNavigation> {
             items: [
               BottomNavigationBarItem(
                 icon: selectedIndex != 0
-                    ? Image.asset('assets/vail_icon_black.png')
-                    : Image.asset('assets/vail_icon.png'),
+                    ? Image.asset('assets/home.png')
+                    : Image.asset('assets/home2.png'),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
@@ -78,7 +79,7 @@ class _BottomCustomNavigationState extends State<BottomCustomNavigation> {
               ),
               BottomNavigationBarItem(
                 icon: Image.asset('assets/exchange.png'),
-                label: 'Exchange',
+                label: 'Currency',
               ),
               BottomNavigationBarItem(
                 icon: selectedIndex != 3
