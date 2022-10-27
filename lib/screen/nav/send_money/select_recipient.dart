@@ -46,39 +46,46 @@ class SelectReceiver extends StatelessWidget {
         backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             height: 53,
             width: MediaQuery.of(context).size.width,
             decoration:
                 const BoxDecoration(color: Color.fromRGBO(234, 86, 12, 0.15)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Search by VW@XXXXXXX',
-                  style: GoogleFonts.mulish(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: const Color.fromRGBO(0, 0, 0, 1)),
-                ),
-                Image.asset(
-                  'assets/home/scan.png',
-                  height: 25,
-                  width: 25,
-                )
-              ],
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Search by VW@XXXXXXX',
+                    style: GoogleFonts.mulish(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: const Color.fromRGBO(0, 0, 0, 1)),
+                  ),
+                  Image.asset(
+                    'assets/home/scan.png',
+                    height: 25,
+                    width: 25,
+                  )
+                ],
+              ),
             ),
           ),
           const SizedBox(
             height: 10,
           ),
-          Text(
-            'Recent Transfer',
-            style: GoogleFonts.inter(
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                color: const Color.fromRGBO(41, 45, 50, 1)),
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0, right: 20),
+            child: Text(
+              'Recent Transfer',
+              style: GoogleFonts.inter(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: const Color.fromRGBO(41, 45, 50, 1)),
+            ),
           ),
           const SizedBox(
             height: 10,
@@ -87,9 +94,12 @@ class SelectReceiver extends StatelessWidget {
               itemCount: history.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return EachHist(
-                    name: history[index]['name'],
-                    address: history[index]['address']);
+                return Padding(
+                  padding: const EdgeInsets.only(left: 20.0, right: 20),
+                  child: EachHist(
+                      name: history[index]['name'],
+                      address: history[index]['address']),
+                );
               })
         ],
       ),

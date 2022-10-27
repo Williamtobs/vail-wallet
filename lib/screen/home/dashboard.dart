@@ -43,13 +43,13 @@ class _DashBoardState extends State<DashBoard> {
               children: [
                 Text('Good Morning Victor Chike',
                     style: GoogleFonts.mulish(
-                        fontSize: 10,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                         color: Colors.black)),
                 const SizedBox(height: 3),
                 Text('Welcome back',
                     style: GoogleFonts.mulish(
-                        fontSize: 8,
+                        fontSize: 12,
                         fontWeight: FontWeight.w400,
                         color: Colors.black)),
               ],
@@ -67,12 +67,15 @@ class _DashBoardState extends State<DashBoard> {
                     BottomSheets.showBottomSheet(
                         context: context,
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 10.0, right: 10, top: 10, bottom: 10),
+                          padding: const EdgeInsets.only(
+                              left: 10.0, right: 10, top: 10, bottom: 10),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                const SizedBox(height: 20,),
+                                const SizedBox(
+                                  height: 20,
+                                ),
                                 Text('Set Vail Wallet Address',
                                     style: GoogleFonts.inter(
                                         fontSize: 16,
@@ -90,20 +93,27 @@ class _DashBoardState extends State<DashBoard> {
                                 const SizedBox(height: 20),
                                 Padding(
                                   padding: EdgeInsets.only(
-                                      bottom: MediaQuery.of(context).viewInsets.bottom),
+                                      bottom: MediaQuery.of(context)
+                                          .viewInsets
+                                          .bottom),
                                   child: TextFormField(
                                     decoration: InputDecoration(
-                                        hintText: 'Enter your Vail Wallet address',
+                                        hintText:
+                                            'Enter your Vail Wallet address',
                                         border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(5),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
                                             borderSide: const BorderSide(
-                                              width: 1,
-                                                color: Color.fromRGBO(234, 86, 12, 1))),
+                                                width: 1,
+                                                color: Color.fromRGBO(
+                                                    234, 86, 12, 1))),
                                         focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(5),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
                                             borderSide: const BorderSide(
-                                              width: 1,
-                                                color: Color.fromRGBO(234, 86, 12, 1))),
+                                                width: 1,
+                                                color: Color.fromRGBO(
+                                                    234, 86, 12, 1))),
                                         hintStyle: GoogleFonts.mulish(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w400,
@@ -117,7 +127,7 @@ class _DashBoardState extends State<DashBoard> {
                                         fontWeight: FontWeight.w700,
                                         color: Colors.black)),
                                 const SizedBox(height: 20),
-                                Button(text: 'Set Access', action: (){})
+                                Button(text: 'Set Access', action: () {})
                               ],
                             ),
                           ),
@@ -131,7 +141,7 @@ class _DashBoardState extends State<DashBoard> {
                 ),
                 const SizedBox(width: 4),
                 Image.asset(
-                  'assets/notification.png',
+                  'assets/Notification.png',
                   height: 35,
                   width: 35,
                 ),
